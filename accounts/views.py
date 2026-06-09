@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from django.contrib.auth.views import LoginView
+# from django.contrib.auth.mixins import LoginRequiredMixin
+
 from django.urls import reverse_lazy
 
 # from django.http import HttpResponse
@@ -24,5 +26,3 @@ class DashboardRedirectView(TemplateView):
             return redirect('admin-dashboard')
         return redirect('student-dashboard')
     
-    
-# I meant student
