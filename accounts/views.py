@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from django.contrib.auth.views import LoginView
+from django.urls import reverse_lazy
 
 # from django.http import HttpResponse
 
@@ -12,7 +13,9 @@ class HomeView(TemplateView):
     
 class CustomLoginView(LoginView):
     template_name = 'accounts/login.html'
-
+    
+    def get_success_url(self):
+        return reverse_lazy('dashboard')
 
 # User is class and user is object of that class
 class DashboardRedirectView(TemplateView):

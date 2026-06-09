@@ -13,7 +13,7 @@
                     <form method="POST" action="">
                         {% csrf_token %}
                         {{form.as_p}}
-                        <a href="{% url 'dashboard' %}" class="btn btn-primary">Login</a>
+                        <button class="btn btn-primary" type="submit">Login</button>
                     </form>
                 </div>
             </div>
