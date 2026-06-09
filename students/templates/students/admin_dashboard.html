@@ -1,6 +1,15 @@
+{% extends 'accounts/base.html' %}
+
+{% block content %}
+
 <h1>Admin Dashboard</h1>
 
 <form action="{% url 'logout' %}" method="POST">
     {% csrf_token %}
     <button type="submit">Logout</button>
+
+
+    <a href="{% url 'student-add' %}" class="btn btn-success">Add Student</a>
 </form>
+
+{% endblock %}
