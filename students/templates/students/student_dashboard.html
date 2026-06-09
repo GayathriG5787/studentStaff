@@ -1,6 +1,16 @@
+{% extends 'accounts/base.html' %}
+
+{% block content %}
+
 <h1>Student Dashboard</h1>
 
 <form action="{% url 'logout' %}" method="POST">
     {% csrf_token %}
     <button type="submit">Logout</button>
 </form>
+
+<h3>My Profile</h3>
+
+{{request.user}}
+
+{% endblock %}

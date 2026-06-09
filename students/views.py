@@ -14,10 +14,10 @@ from accounts.mixins import AdminRequiredMixin, StudentRequiredMixin
 class AdminDashboard(LoginRequiredMixin, AdminRequiredMixin, TemplateView):
     template_name = 'students/admin_dashboard.html'
     
-class StudentDashboard(LoginRequiredMixin, StudentRequiredMixin ,TemplateView):
+class StudentDashboard(LoginRequiredMixin, StudentRequiredMixin,TemplateView):
     template_name = 'students/student_dashboard.html'
     
-class StudentCreateView(CreateView):
+class StudentCreateView(LoginRequiredMixin, AdminRequiredMixin, CreateView):
     model = Student
     form_class = StudentCreateForm
     
