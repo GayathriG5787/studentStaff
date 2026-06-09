@@ -18,3 +18,6 @@ class DashboardRedirectView(TemplateView):
         if request.user.role == 'admin':
             return redirect('admin-dashboard')
         return redirect('student-dashboard')
+    
+    
+# I meant student
