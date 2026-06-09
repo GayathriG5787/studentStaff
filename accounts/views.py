@@ -13,6 +13,8 @@ class HomeView(TemplateView):
 class CustomLoginView(LoginView):
     template_name = 'accounts/login.html'
 
+
+# User is class and user is object of that class
 class DashboardRedirectView(TemplateView):
     def get(self, request, *args, **kwargs):
         if request.user.role == 'admin':
