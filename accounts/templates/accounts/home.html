@@ -1,11 +1,56 @@
 {% extends 'accounts/base.html' %}
-
+{% load static %}
 {% block content %}
 
-<div class="container mt-5 text-center">
-    <h1>University home page</h1>
-    <a href="{% url 'login' %}" class="btn btn-primary mt-3">Login</a>
-</div>
+<!-- bg-white for background white, navbar-light is for making the icons and text readable in light background -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold text-primary fs-4" href="#">
+            <i class="bi bi-mortarboard-fill me-2"></i>NWMP
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav align-items-center">
+                <li class="nav-item me-3">
+                    <a class="nav-link active fw-medium" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'login' %}" class="btn btn-outline-primary px-4 rounded-pill fw-bold shadow-sm">Portal Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
+<header class="bg-light bg-gradient min-vh-100 d-flex align-items-center">
+    <div class="container py-5 my-5">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6 text-center text-lg-start">
+                <h1 class="display-4 text-dark mb-3" style="font-weight: 700;">
+                    Student Management <br><span class="text-primary">Made Seamless.</span>
+                </h1>
+                <p class="lead text-muted mb-4">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta, saepe atque tempora enim ratione perspiciatis illum veniam assumenda pariatur rerum?
+                </p>
+                <div>
+                    <a href="{% url 'login' %}" class="btn btn-primary rounded-3 fs-5 px-3 shadow-sm">
+                        Access Portal <i class="bi bi-arrow-right ms-2"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6 d-none d-lg-block">
+                <!-- img-fluid makes images responsive -->
+                <img class="img-fluid rounded-pill shadow" src="{% static 'accounts/images/hero-img.jpg' %}" alt="">
+            </div>
+        </div>
+    </div>
+</header>
+
+<footer class="py-4 bg-light border-top text-center text-muted small">
+    <div class="container">
+        &copy; 2026 NWMP Student Management System. All rights reserved.
+    </div>
+</footer>
 {% endblock %}
-
