@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DetailView
 from .forms import StudentCreateForm
 from .models import Student
 from accounts.models import User
@@ -35,3 +35,15 @@ class StudentCreateView(LoginRequiredMixin, AdminRequiredMixin, CreateView):
         self.object.user = user
         self.object.save()
         return super().form_valid(form)    
+    
+class StudentProfileView(LoginRequiredMixin, DetailView):
+    model = Student
+    template_name = 'students/profile.html'
+    # Gives name for object
+    context_object_name = 'student'
+    
+    # get_object is a conventional function name
+    def get_object(self):
+        return Student.objects.get(
+            user = self.request.user
+        )
