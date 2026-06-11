@@ -1,5 +1,6 @@
 from django import forms
 from .models import Student
+from django.contrib.auth import get_user_model
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
 
@@ -13,6 +14,7 @@ class StudentCreateForm(forms.ModelForm):
         widget=forms.PasswordInput,
     )
     
+    # To tell which model to use and which fields to include
     class Meta:
         model = Student
         
@@ -21,6 +23,18 @@ class StudentCreateForm(forms.ModelForm):
             'department',
             'year'
         ]
+        
+    def clean_username(self):
+        username = self.cleaned_data.get('username')
+        
+        User = get_user_model()
+        
+        if User.objects.filter(username=username).exists():
+            raise forms.ValidationError(
+                'Username already taken.'
+            )
+            
+        return username
         
     def clean_password(self):
         password = self.cleaned_data.get('password')
