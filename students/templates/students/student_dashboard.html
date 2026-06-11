@@ -9,7 +9,7 @@
     <button type="submit">Logout</button>
 </form>
 
-<h3>Hello {{request.user}}</h3>
+<h3>Hello {{request.user.student.name}}</h3>
 
 <a href="{% url 'student-profile' %}" class="btn btn-primary">My Profile</a>
 

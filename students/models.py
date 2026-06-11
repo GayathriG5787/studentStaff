@@ -28,7 +28,16 @@ class Student(models.Model):
         max_length=10,
         choices=DEPARTMENT_CHOICES
     )
-    year = models.PositiveSmallIntegerField()
+    
+    YEAR_CHOICES = (
+        (1, '1st Year'),
+        (2, '2nd Year'),
+        (3, '3rd Year'),
+        (4, '4th Year')
+    )
+    year = models.PositiveSmallIntegerField(
+        choices= YEAR_CHOICES
+    )
     
     def __str__(self):
         return self.user.name
