@@ -40,4 +40,4 @@ class Student(models.Model):
     )
     
     def __str__(self):
-        return self.user.name
+        return self.name

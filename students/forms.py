@@ -95,6 +95,16 @@ class StudentCreateForm(forms.ModelForm):
         
         return password
     
+    def clean_roll_number(self):
+        roll_number = self.cleaned_data.get('roll_number')
+        
+        if not roll_number.isdigit():
+            raise forms.ValidationError(
+                'Roll number can contain only numbers'
+            )
+            
+        return roll_number
+    
     def clean(self):
         cleaned_data = super().clean()
         
