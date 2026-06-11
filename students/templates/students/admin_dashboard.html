@@ -1,188 +1,28 @@
-{% extends 'accounts/base.html' %} {% block content %}
+{% extends 'students/dashboard_base.html' %}
 
-<!-- offcanvas-start = opens from the left side -->
-<!-- Header displayed only in mobile -->
-<div
-  class="offcanvas offcanvas-start bg-dark text-bg-dark d-md-none"
-  tabindex="-1"
-  id="sidebarOffcanvas"
-  aria-labelledby="sidebarOffcanvasLabel"
-  style="z-index: 1060"
->
-  <!-- Sidebar opened on mobile screens -->
-  <div class="offcanvas-header border-bottom border-secondary p-3">
-    <h5
-      class="offcanvas-title text-white fw-bold d-flex align-items-center"
-      id="sidebarOffcanvasLabel"
-    >
-      <i class="bi bi-mortarboard-fill text-primary fs-4 me-2"></i>NWMP
-    </h5>
-    <button
-      type="button"
-      class="btn-close btn-close-white"
-      data-bs-dismiss="offcanvas"
-      aria-label="Close"
-    ></button>
-  </div>
-  <div class="offcanvas-body d-flex flex-column justify-content-between">
-    <div class="w-100">
-      <ul class="nav flex-column gap-1 w-100">
-        <li class="nav-item">
-          <a
-            class="nav-link text-light rounded-3 opacity-75 py-2 px-3 d-flex align-items-center"
-            href="#"
-          >
-            <i class="bi bi-speedometer2 me-2"></i> Dashboard
-          </a>
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link text-light rounded-3 opacity-75 py-2 px-3 d-flex align-items-center"
-            href="{% url 'student-add' %}"
-          >
-            <i class="bi bi-person-plus me-2"></i> Add Student
-          </a>
-        </li>
-      </ul>
-    </div>
-
-    <div class="w-100">
-      <hr class="text-secondary" />
-      <form action="{% url 'logout' %}" method="POST" class="px-2">
-        {% csrf_token %}
-        <button
-          type="submit"
-          class="btn btn-outline-danger w-100 border-0 text-start d-flex align-items-center py-2 px-2"
-        >
-          <i class="bi bi-box-arrow-left me-2"></i> Logout
-        </button>
-      </form>
-    </div>
+{% block dashboard_content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-4 pb-3 mb-4 border-bottom">
+  <div>
+    <h1 class="h2 fw-bold text-dark mb-0">Admin Dashboard</h1>
   </div>
 </div>
 
-<div class="container-fluid">
-  <div class="row">
-    <div
-      class="d-md-none navbar navbar-dark bg-dark p-3 shadow-sm sticky-top"
-      style="z-index: 1030"
-    >
-      <a class="navbar-brand fw-bold fs-5" href="#">
-        <i class="bi bi-mortarboard-fill text-primary me-2"></i>NWMP
-      </a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="offcanvas"
-        data-bs-target="#sidebarOffcanvas"
-        aria-controls="sidebarOffcanvas"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
+<div class="row g-4">
+  <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+    <div class="card border-1 shadow-sm rounded-3 bg-white h-100">
+      <div class="card-body p-4 d-flex flex-column align-items-start">
+        <div class="bg-primary bg-opacity-10 text-primary rounded-3 p-3 mb-3 fs-4 d-inline-flex">
+          <i class="bi bi-person-plus-fill"></i>
+        </div>
+        <h5 class="fw-bold text-dark mb-2">Student Registration</h5>
+        <p class="text-muted small mb-4">
+          Enroll new students into the system database, assign core details, and configure initial profiles.
+        </p>
+        <a href="{% url 'student-add' %}" class="btn btn-outline-primary btn-sm rounded-2 fw-semibold px-3 mt-auto">
+          Go to Registration
+        </a>
+      </div>
     </div>
-
-    <!-- Sidebar displayed by default in large screens -->
-    <nav
-      id="sidebarMenu"
-      class="col-md-3 col-lg-2 bg-dark sidebar shadow d-none d-md-block"
-    >
-      <div class="position-sticky pt-4 px-1 d-flex flex-column h-100">
-        <div class="d-flex align-items-center px-2 text-white">
-          <i class="bi bi-mortarboard-fill text-primary fs-3 me-2"></i>
-          <span class="fs-5 fw-bold">NWMP</span>
-        </div>
-
-        <hr class="text-secondary" />
-
-        <ul class="nav flex-column mb-auto gap-1">
-          <li class="nav-item">
-            <a
-              class="nav-link text-light opacity-75 rounded-3 py-2 px-3 d-flex align-items-center"
-              href="#"
-            >
-              <i class="bi bi-speedometer2 me-2"></i> Dashboard
-            </a>
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link text-light opacity-75 rounded-3 py-2 px-3 d-flex align-items-center"
-              href="{% url 'student-add' %}"
-            >
-              <i class="bi bi-person-plus me-2"></i> Add Student
-            </a>
-          </li>
-        </ul>
-
-        <hr class="text-secondary" />
-
-        <form action="{% url 'logout' %}" method="POST" class="px-2 pb-4">
-          {% csrf_token %}
-          <button
-            type="submit"
-            class="btn btn-outline-danger w-100 border-0 rounded-3 text-start d-flex align-items-center py-2 px-2"
-          >
-            <i class="bi bi-box-arrow-left me-2"></i> Logout
-          </button>
-        </form>
-      </div>
-    </nav>
-
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 bg-light">
-      <div
-        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-4 pb-3 mb-4 border-bottom"
-      >
-        <div>
-          <h1 class="h2 fw-bold text-dark mb-0">Admin Dashboard</h1>
-        </div>
-      </div>
-
-      <div class="row g-4">
-        <div class="col-12 col-sm-6 col-md-6 col-lg-4">
-          <div class="card border-1 shadow-sm rounded-3 bg-white h-100">
-            <div class="card-body p-4 d-flex flex-column align-items-start">
-              <div
-                class="bg-primary bg-opacity-10 text-primary rounded-3 p-3 mb-3 fs-4 d-inline-flex"
-              >
-                <i class="bi bi-person-plus-fill"></i>
-              </div>
-              <h5 class="fw-bold text-dark mb-2">Student Registration</h5>
-              <p class="text-muted small mb-4">
-                Enroll new students into the system database, assign core
-                details, and configure initial profiles.
-              </p>
-              <a
-                href="{% url 'student-add' %}"
-                class="btn btn-outline-primary btn-sm rounded-2 fw-semibold px-3 mt-auto"
-              >
-                Go to Registration
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
   </div>
 </div>
-
-<style>
-  /* Exact original structural rules for Desktop layout visibility */
-  @media (min-width: 768px) {
-    .sidebar {
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      z-index: 100;
-      display: block !important;
-    }
-  }
-
-  /* Interactive Hover Effect kept from original code */
-  .nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.05);
-    color: #fff !important;
-    transition: all 0.2s ease-in-out;
-  }
-</style>
 {% endblock %}
