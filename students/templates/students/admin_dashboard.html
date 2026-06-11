@@ -4,15 +4,19 @@
 <div class="container-fluid">
     <div class="row">
         
+        <!-- Dark Header Navbar when sidebar is hidden -->
         <div class="d-md-none navbar navbar-dark bg-dark p-3 shadow-sm sticky-top">
+            <!-- Logo -->
             <a class="navbar-brand fw-bold fs-5" href="#">
                 <i class="bi bi-mortarboard-fill text-primary me-2"></i>NWMP
             </a>
+            <!-- aria-control is used to tell screen readers which part of the page is affected by this button -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
         </div>
 
+        <!-- Sidebar -->
         <nav id="sidebarMenu" class="col-md-3 col-lg-2 bg-dark sidebar collapse shadow">
             <div class="position-sticky pt-4 px-3 d-flex flex-column h-100">
                 
