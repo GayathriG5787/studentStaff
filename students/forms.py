@@ -3,6 +3,7 @@ from .models import Student
 from django.contrib.auth import get_user_model
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
+import re
 
 class StudentCreateForm(forms.ModelForm):
     username = forms.CharField()
@@ -27,9 +28,36 @@ class StudentCreateForm(forms.ModelForm):
     def clean_username(self):
         username = self.cleaned_data.get('username')
         
+        # Minimum length
+        if len(username) < 3:
+            raise forms.ValidationError(
+                "Username must contain atleast 3 characters."
+            )
+            
+        # Maximum length
+        if len(username) > 50:
+            raise forms.ValidationError(
+                'Username cannot exceed 50 characters'
+            )
+        
+        
+        # Only letters and numbers allowed
+        # fullmatch() checks whether the entire string matches the pattern
+        # r here means raw string
+        if not re.fullmatch(r'[A-Za-z0-9]+', username):
+            raise forms.ValidationError(
+                'Username can contain only letters and numbers.'
+            )
+            
+        # Cannot be only numbers
+        if username.isdigit():
+            raise forms.ValidationError(
+                'Username cannot contain only numbers.'
+            )
+        
         User = get_user_model()
         
-        if User.objects.filter(username=username).exists():
+        if User.objects.filter(username__iexact=username).exists():
             raise forms.ValidationError(
                 'Username already taken.'
             )
