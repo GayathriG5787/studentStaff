@@ -1,16 +1,31 @@
-{% extends 'accounts/base.html' %}
+{% extends 'students/studentDashboard_base.html' %}
+{% block dashboard_content %}
 
-{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-4 pb-3 mb-4 border-bottom">
+  <div>
+    <h1 class="h2 fw-bold text-dark mb-0">Student Dashboard</h1>
+  </div>
+</div>
 
-<h1>Student Dashboard</h1>
+<div class="row g-4">
+  <!-- Profile Summary Card -->
+  <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+    <div class="card border-1 shadow-sm rounded-3 bg-white h-100">
+      <div class="card-body p-4 d-flex flex-column align-items-start">
+        <div class="bg-primary bg-opacity-10 text-primary rounded-3 p-3 mb-3 fs-4 d-inline-flex">
+          <i class="bi bi-person-badge-fill"></i>
+        </div>
+        <h5 class="fw-bold text-dark mb-1">{{ request.user.student.name }}</h5>
+        <p class="text-muted small mb-4">
+          Access your personalized student records, academic registration metrics, and manage your system account.
+        </p>
+        <a href="{% url 'student-profile' %}" class="btn btn-outline-primary btn-sm rounded-2 fw-semibold px-3 mt-auto">
+          View My Profile
+        </a>
+      </div>
+    </div>
+  </div>
 
-<form action="{% url 'logout' %}" method="POST">
-    {% csrf_token %}
-    <button type="submit">Logout</button>
-</form>
-
-<h3>Hello {{request.user.student.name}}</h3>
-
-<a href="{% url 'student-profile' %}" class="btn btn-primary">My Profile</a>
+</div>
 
 {% endblock %}

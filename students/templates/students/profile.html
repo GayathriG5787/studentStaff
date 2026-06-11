@@ -1,12 +1,77 @@
-{% extends 'accounts/base.html' %}
+{% extends 'students/studentDashboard_base.html' %}
+{% block dashboard_content %}
 
-{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-4 pb-3 mb-4 border-bottom">
+  <div>
+    <h1 class="h2 fw-bold text-dark mb-0">My Profile</h1>
+  </div>
+  <div class="mt-2 mt-md-0">
+    <a href="{% url 'student-dashboard' %}" class="btn btn-outline-secondary btn-sm rounded-2 fw-semibold px-3 d-inline-flex align-items-center gap-2">
+      <i class="bi bi-arrow-left"></i> Back to Dashboard
+    </a>
+  </div>
+</div>
 
-<h2>My Profile</h2>
+<div class="card border-1 shadow-sm rounded-3 bg-white" style="max-width: 850px;">
+  <div class="card-body p-4">
+    
+    <!-- Profile Top Identity Banner -->
+    <div class="d-flex align-items-center gap-3 pb-4 mb-4 border-bottom">
+      <div class="bg-primary bg-opacity-10 text-primary rounded-3 p-3 fs-3 d-inline-flex">
+        <i class="bi bi-person-fill"></i>
+      </div>
+      <div>
+        <h4 class="fw-bold text-dark mb-1">{{ student.name }}</h4>
+        <p class="text-muted small mb-0">Registered Student Account</p>
+      </div>
+    </div>
 
-<p> Name: {{request.user}}</p>
-<p> Roll Number: {{student.roll_number}}</p>
-<p> Department: {{student.department}}</p>
-<p> year: {{student.year}}</p>
+    <!-- Academic Metadata Grid Layout -->
+    <div class="row g-4">
+      <!-- Full Name -->
+      <div class="col-12 col-sm-6">
+        <div class="p-3 bg-light bg-opacity-50 rounded-2 border border-1">
+          <span class="d-block text-muted small fw-semibold mb-1">Full Name</span>
+          <span class="text-dark fw-bold">{{ student.name }}</span>
+        </div>
+      </div>
+
+      <!-- System Username -->
+      <div class="col-12 col-sm-6">
+        <div class="p-3 bg-light bg-opacity-50 rounded-2 border border-1">
+          <span class="d-block text-muted small fw-semibold mb-1">Username</span>
+          <span class="text-dark fw-bold">{{ request.user.username }}</span>
+        </div>
+      </div>
+
+      <!-- Registration Roll Number -->
+      <div class="col-12 col-sm-6">
+        <div class="p-3 bg-light bg-opacity-50 rounded-2 border border-1">
+          <span class="d-block text-muted small fw-semibold mb-1">Roll Number</span>
+          <span class="text-dark fw-bold">{{ student.roll_number|default:"—" }}</span>
+        </div>
+      </div>
+
+      <!-- Assigned Department -->
+      <div class="col-12 col-sm-6">
+        <div class="p-3 bg-light bg-opacity-50 rounded-2 border border-1">
+          <span class="d-block text-muted small fw-semibold mb-1">Department</span>
+          <span class="text-dark fw-bold">{{ student.department|default:"—" }}</span>
+        </div>
+      </div>
+
+      <!-- Academic Year Classification -->
+      <div class="col-12 col-sm-6">
+        <div class="p-3 bg-light bg-opacity-50 rounded-2 border border-1">
+          <span class="d-block text-muted small fw-semibold mb-1">Academic Year</span>
+          <span class="text-dark fw-bold">
+            {% if student.year %}{{ student.year }} Year{% else %}—{% endif %}
+          </span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 {% endblock %}
