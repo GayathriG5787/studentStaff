@@ -9,7 +9,7 @@
   aria-labelledby="sidebarOffcanvasLabel"
   style="z-index: 1060"
 >
-<!-- Sidebar opened on mobile screens -->
+  <!-- Sidebar opened on mobile screens -->
   <div class="offcanvas-header border-bottom border-secondary p-3">
     <h5
       class="offcanvas-title text-white fw-bold d-flex align-items-center"
@@ -128,7 +128,7 @@
       </div>
     </nav>
 
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 bg-light min-vh-100">
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 bg-light">
       <div
         class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-4 pb-3 mb-4 border-bottom"
       >
@@ -139,7 +139,7 @@
 
       <div class="row g-4">
         <div class="col-12 col-sm-6 col-md-6 col-lg-4">
-          <div class="card border-0 shadow-sm rounded-3 bg-white h-100">
+          <div class="card border-1 shadow-sm rounded-3 bg-white h-100">
             <div class="card-body p-4 d-flex flex-column align-items-start">
               <div
                 class="bg-primary bg-opacity-10 text-primary rounded-3 p-3 mb-3 fs-4 d-inline-flex"
@@ -166,18 +166,6 @@
 </div>
 
 <style>
-  /* Exact original structural rules for Desktop layout visibility */
-  @media (min-width: 768px) {
-    .sidebar {
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      z-index: 100;
-      display: block !important;
-    }
-  }
-
   /* Interactive Hover Effect kept from original code */
   .nav-link:hover {
     background-color: rgba(255, 255, 255, 0.05);
