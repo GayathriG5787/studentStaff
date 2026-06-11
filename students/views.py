@@ -36,7 +36,7 @@ class StudentCreateView(LoginRequiredMixin, AdminRequiredMixin, CreateView):
         self.object.save()
         return super().form_valid(form)    
     
-class StudentProfileView(LoginRequiredMixin, DetailView):
+class StudentProfileView(LoginRequiredMixin, StudentRequiredMixin, DetailView):
     model = Student
     template_name = 'students/profile.html'
     # Gives name for object
