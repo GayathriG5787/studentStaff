@@ -20,6 +20,7 @@ class StudentCreateForm(forms.ModelForm):
         model = Student
         
         fields = [
+            'name',
             'roll_number',
             'department',
             'year'
@@ -63,6 +64,26 @@ class StudentCreateForm(forms.ModelForm):
             )
             
         return username
+    
+    def clean_name(self):
+        name = self.cleaned_data.get('name').strip()
+        
+        if len(name) < 3:
+            raise forms.ValidationError(
+                'Student name must contain at least 3 characters'
+            )
+            
+        if len(name) > 50:
+            raise forms.ValidationError(
+                'Student name cannot exceed 50 characters'
+            )
+            
+        if not re.fullmatch(r'[A-Za-z ]+', name):
+            raise forms.ValidationError(
+                'Student name can contain only letters and spaces.'
+            )
+            
+        return name
         
     def clean_password(self):
         password = self.cleaned_data.get('password')

@@ -9,6 +9,7 @@ class Student(models.Model):
         default=uuid.uuid4,
         editable=False
     )
+    name = models.CharField(max_length=50)
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE
@@ -30,4 +31,4 @@ class Student(models.Model):
     year = models.PositiveSmallIntegerField()
     
     def __str__(self):
-        return self.user.username
+        return self.user.name
