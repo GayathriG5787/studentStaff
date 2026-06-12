@@ -1,7 +1,7 @@
-{% extends 'students/dashboard_base.html' %}
-
-{% block dashboard_content %}
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-4 pb-3 mb-4 border-bottom">
+{% extends 'students/dashboard_base.html' %} {% block dashboard_content %}
+<div
+  class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-4 pb-3 mb-4 border-bottom"
+>
   <div>
     <h1 class="h2 fw-bold text-dark mb-0">Admin Dashboard</h1>
   </div>
@@ -11,14 +11,20 @@
   <div class="col-12 col-sm-6 col-md-6 col-lg-4">
     <div class="card border-1 shadow-sm rounded-3 bg-white h-100">
       <div class="card-body p-4 d-flex flex-column align-items-start">
-        <div class="bg-primary bg-opacity-10 text-primary rounded-3 p-3 mb-3 fs-4 d-inline-flex">
+        <div
+          class="bg-primary bg-opacity-10 text-primary rounded-3 p-3 mb-3 fs-4 d-inline-flex"
+        >
           <i class="bi bi-person-plus-fill"></i>
         </div>
         <h5 class="fw-bold text-dark mb-2">Student Registration</h5>
         <p class="text-muted small mb-4">
-          Enroll new students into the system database, assign core details, and configure initial profiles.
+          Enroll new students into the system database, assign core details, and
+          configure initial profiles.
         </p>
-        <a href="{% url 'student-add' %}" class="btn btn-outline-primary btn-sm rounded-2 fw-semibold px-3 mt-auto">
+        <a
+          href="{% url 'student-add' %}"
+          class="btn btn-outline-primary btn-sm rounded-2 fw-semibold px-3 mt-auto"
+        >
           Go to Registration
         </a>
       </div>
@@ -26,26 +32,44 @@
   </div>
 </div>
 
-<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1100;">
-  {% if messages %}
+<div
+  class="toast-container position-fixed bottom-0 end-0 p-3"
+  style="z-index: 1100"
+>
+
+    {% if messages %}
     {% for message in messages %}
     <!-- role='alert' ensures screen readers announce the message as soon as it appears -->
-      <div class="toast align-items-center text-dark bg-white border-0 shadow rounded-3" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
-        <div class="bg-primary py-1 rounded-top-3"></div>
-        
-        <div class="d-flex p-3 align-items-center">
-          <div class="toast-body d-flex align-items-center gap-2">
-            <i class="bi bi-check-circle-fill text-success fs-5"></i>
-            <div>
-              <strong class="d-block text-dark small fw-bold">System Notification</strong>
-              <span class="text-muted small">{{ message }}</span>
-            </div>
-          </div>
-          <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+  <div
+    class="toast align-items-center text-dark bg-white border-1 shadow rounded-3"
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
+  >
+    <div class="bg-primary py-1 rounded-top"></div>
+
+    <div class="d-flex p-2 align-items-center">
+      <div class="toast-body d-flex align-items-center gap-2">
+        <i class="bi bi-check-circle-fill text-success fs-5"></i>
+        <div>
+          <strong class="d-block text-dark fw-bold">System Notification</strong>
+          <span class="text-muted small">{{message}}</span>
         </div>
       </div>
+      <button
+        type="button"
+        class="btn-close me-2 m-auto"
+        data-bs-dismiss="toast"
+        aria-label="Close"
+      ></button>
+    </div>
+  </div>
     {% endfor %}
   {% endif %}
+
+
 </div>
+
+
 
 {% endblock %}
