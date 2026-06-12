@@ -7,6 +7,8 @@ from .forms import StudentCreateForm
 from .models import Student
 from accounts.models import User
 
+from django.contrib import messages
+
 from django.urls import reverse_lazy
 
 from accounts.mixins import AdminRequiredMixin, StudentRequiredMixin
@@ -34,6 +36,7 @@ class StudentCreateView(LoginRequiredMixin, AdminRequiredMixin, CreateView):
         self.object = form.save(commit=False)
         self.object.user = user
         self.object.save()
+        messages.success(self.request, "Student Profile has been created successfully")
         return super().form_valid(form)    
     
 class StudentProfileView(LoginRequiredMixin, StudentRequiredMixin, DetailView):
