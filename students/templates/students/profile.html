@@ -60,7 +60,15 @@
         <div class="p-3 bg-light bg-opacity-50 rounded-2 border border-1">
           <span class="d-block text-muted small fw-semibold mb-1">Academic Year</span>
           <span class="text-dark fw-bold">
-            {% if student.year %}{{ student.year }} Year{% else %}—{% endif %}
+            {% if student.year == 1 %}
+              {{ student.year }}st Year
+            {% elif student.year == 2 %}
+              {{ student.year }}nd Year
+            {% elif student.year == 3 %}
+              {{ student.year }}rd year
+            {% else %}
+              {{ student.year }}th year
+            {% endif %}
           </span>
         </div>
       </div>
