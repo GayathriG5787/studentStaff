@@ -33,6 +33,7 @@ class StudentCreateView(LoginRequiredMixin, AdminRequiredMixin, CreateView):
             role = 'student'
         )
         
+        # Creates a student object form the form data without saving it into the DB
         self.object = form.save(commit=False)
         self.object.user = user
         self.object.save()
